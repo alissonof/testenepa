@@ -34,7 +34,7 @@ $(document).ready(function(){
 });
 
 </script>
-<title>Cadastrar Endereço</title>
+<title>Atualizar Endereço</title>
 </head>
 <body>
 	
@@ -63,13 +63,14 @@ $(document).ready(function(){
 			</div>
 		</c:if>
 
-		<form name="formSalvar" id="formSalvar" method="post" action="salvarendereco.do">
+		<form name="formSalvar" id="formSalvar" method="post" action="editarendereco.do">
 					<br>
+					<input type="hidden" id="idCep"  name="idCep" value="${endereco.id}">
 			<table>
 				<tr>
 					<td><label class="texto">CEP:</label></td>
 					<td><input type="text" id="cep" name="cep" maxlength="8"
-						value="${cep}" size="7"> &nbsp;&nbsp; <input type="button" id="btnCep" 
+						value="${endereco.cep}" size="7"> &nbsp;&nbsp; <input type="button" id="btnCep" 
 								  value="Buscar" onclick="buscarCep();">
 								  &nbsp;&nbsp;<img id="loading" src="/testeNetShoes/images/ajax-loader.gif"></td>
 				</tr>
@@ -77,39 +78,39 @@ $(document).ready(function(){
 				<tr>
 					<td><label class="texto">Rua:</label></td>
 					<td><input type="text" id="rua" name="rua" size="40"
-						maxlength="50" value="${rua}"></td>
+						maxlength="50" value="${endereco.rua}"></td>
 				</tr>
 				
 				<tr>
 					<td><label class="texto">Número:</label></td>
 					<td><input type="text" id="numero" name="numero" size="4"
-						maxlength="4" value="${numero}"></td>
+						maxlength="4" value="${endereco.numero}"></td>
 				</tr>
 				
 				<tr>
 					<td><label class="texto">Complemento:</label></td>
 					<td><input type="text" id="complemento" name="complemento" size="40"
-						maxlength="30" value="${complemento}"></td>
+						maxlength="30" value="${endereco.complemento}"></td>
 				</tr>
 
 				<tr>
 					<td><label class="texto">Bairro:</label></td>
 					<td><input type="text" id="bairro" name="bairro"
-						maxlength="50" value="${bairro}"></td>
+						maxlength="50" value="${endereco.bairro}"></td>
 				</tr>
 				<tr>
 					<td><label class="texto">Cidade:</label></td>
 					<td><input type="text" id="cidade" name="cidade"
-						maxlength="30" value="${cidade}"></td>
+						maxlength="30" value="${endereco.cidade}"></td>
 				</tr>
 				<tr>
 					<td><label class="texto">Estado:</label></td>
 					<td><input type="text" id="estado" name="estado"
-						maxlength="2" value="${estado}"></td>
+						maxlength="2" value="${endereco.estado}"></td>
 				</tr>
 
 				<tr>
-					<td><button type="submit" id="salvar">Salvar</button></td>
+					<td><button type="submit" id="salvar">Atualizar</button></td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>

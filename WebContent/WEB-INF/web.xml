@@ -3,6 +3,11 @@
   <display-name>testeNetShoes</display-name>
 
 <servlet>
+	<servlet-name>EditarEndereco</servlet-name>
+	<servlet-class>br.com.testenetshoes.controller.servlet.EditarEnderecoServlet</servlet-class>
+</servlet>
+
+<servlet>
 	<servlet-name>ExcluirEndereco</servlet-name>
 	<servlet-class>br.com.testenetshoes.controller.servlet.ExcluirEnderecoServlet</servlet-class>
 </servlet>
@@ -16,6 +21,11 @@
 	<servlet-name>ListaEndereco</servlet-name>
 	<servlet-class>br.com.testenetshoes.controller.servlet.ListarEnderecoServlet</servlet-class>
 </servlet>
+  
+   <servlet-mapping>
+  	<servlet-name>EditarEndereco</servlet-name>
+  	<url-pattern>/editarendereco.do</url-pattern>
+  </servlet-mapping>
   
   <servlet-mapping>
   	<servlet-name>SalvarEndereco</servlet-name>

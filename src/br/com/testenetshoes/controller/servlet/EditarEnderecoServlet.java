@@ -13,8 +13,8 @@ import br.com.testenetshoes.controller.utils.Utils;
 import br.com.testenetshoes.model.entity.Endereco;
 import br.com.testenetshoes.model.service.EnderecoService;
 
-public class SalvarEnderecoServlet extends HttpServlet{
-
+public class EditarEnderecoServlet extends HttpServlet{
+	
 	/**
 	 * 
 	 */
@@ -24,6 +24,7 @@ public class SalvarEnderecoServlet extends HttpServlet{
 		Endereco endereco = new Endereco();
 		String message = null;
 		try {
+			endereco.setId(Integer.parseInt(request.getParameter("idCep")));
 			endereco.setCep(request.getParameter("cep"));
 			endereco.setRua(request.getParameter("rua"));
 			endereco.setNumero(request.getParameter("numero"));
@@ -34,8 +35,8 @@ public class SalvarEnderecoServlet extends HttpServlet{
 
 			Utils.validate(endereco);
 			EnderecoService eService = new EnderecoService();
-			eService.save(endereco);
-			message = "Dados inseridos com Sucesso";
+			eService.update(endereco);
+			message = "Dados atualizados com Sucesso";
 		} catch (ValidateException e) {
 			request.setAttribute("errors" , e.getErrors());
 		} catch (Exception e) {
@@ -44,7 +45,7 @@ public class SalvarEnderecoServlet extends HttpServlet{
 
 		request.setAttribute("message" , message);
 
-		String url = "consultacep.jsp";
+		String url = "editarcep.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 
 		try {
@@ -57,6 +58,32 @@ public class SalvarEnderecoServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
-
 	
+	public void doGet(HttpServletRequest request, HttpServletResponse response){
+		int id = Integer.parseInt(request.getParameter("id"));
+		EnderecoService eService = new EnderecoService();
+		String message = null;
+		try {
+			Endereco end = eService.findById(id);
+			request.setAttribute("endereco", end);
+		} catch (Exception e) {
+			message = "Erro: "+e.getMessage();
+			request.setAttribute("message" , message);
+		}
+		
+		String url = "editarcep.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+
+		try {
+			rd.forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 }

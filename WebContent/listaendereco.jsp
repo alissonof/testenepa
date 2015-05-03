@@ -34,12 +34,17 @@
 						<td width="5%">${end.id}</td>
 						<td width="10%">${end.cep}</td>
 						<td width="55%">${end.rua}</td>
-						<td width="5%"><a href="">Editar</a></td>
+						<td width="5%"><a href="editarendereco.do?id=${end.id}">Editar</a></td>
 						<td width="5%"><a href="#" onclick="excluir(${end.id})">Excluir</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</form>
+		<br>
+		<br>
+		<table>
+			<tr><td><a href="index.jsp">Página Inicial</a></td></tr>
+		</table>
 	</div>
 </body>
 
